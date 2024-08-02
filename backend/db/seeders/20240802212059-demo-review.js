@@ -19,13 +19,13 @@ const reviews = [
   {
     spotId: 2,
     userId: 2,
-    review:"This was a nice spot!",
+    review:"This was a very unique experience.",
     stars:5
   },
   {
     spotId: 3,
     userId: 3,
-    review:"This was a nice spot!",
+    review:"Great experience and location for a scenic getaway!",
     stars:4
   },
 ] 
