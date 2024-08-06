@@ -1,7 +1,7 @@
 const express = require('express');
 const bcrypt = require('bcryptjs');
 const { setTokenCookie, requireAuth } = require('../../utils/auth');
-const { Spot, User, SpotImage, Review, ReviewImage, Booking } = require('../../db/models');
+const { Spot, User, SpotImage, Review, ReviewImage, Booking, sequelize } = require('../../db/models');
 const { check } = require('express-validator');
 const { handleValidationErrors } = require('../../utils/validation');
 const { where, Op } = require('sequelize');
@@ -45,13 +45,61 @@ const validateSpot = [
     handleValidationErrors
 ];
 
-
-
+const spotsInfo = async (spots) => {
+    const res = [];
+    for (let i = 0; i < spots.length; i++) {
+      // check reviews
+      const spot = spots[i];
+      const reviews = await Review.findAll({ where: { spotId: spot.id } });
+      const totalRating = reviews.reduce((acc, el) => acc + el.stars, 0);
+      const avgStarRating = totalRating / reviews.length;
+  
+      // check images
+      const img = await SpotImage.findOne({
+        where: { spotId: spot.id, preview: true },
+      });
+  
+      let previewImage = null;
+      if (img) {
+        previewImage = img.url;
+      }
+  
+      res.push({
+        id: spot.id,
+        ownerId: spot.ownerId,
+        address: spot.address,
+        city: spot.city,
+        state: spot.state,
+        country: spot.country,
+        lat: spot.lat,
+        lng: spot.lng,
+        name: spot.name,
+        description: spot.description,
+        price: spot.price,
+        createdAt: spot.createdAt,
+        updatedAt: spot.updatedAt,
+        numReviews: reviews.length,
+        avgStarRating, //placeholder
+        previewImage, //placeholder
+        // SpotImages: spot.SpotImages,
+        // Owner: spot.User,
+      });
+    }
+    return res;
+  };
 //Get all Spots
 router.get('/', async (req, res) => {
-    const spots = await Spot.findAll();
+    const spots = await Spot.findAll({
 
-    return res.status(200).json(spots)
+        include: [
+            {model: Review, attributes:['stars'],},
+            {model: SpotImage, attributes:['url']}
+        ]      
+    });
+
+    return res.json({
+        Spots: await spotsInfo(spots)
+    })
 
 });
 
@@ -61,8 +109,11 @@ router.get('/current', async (req, res) => {
     const currentSpots = await Spot.findAll({
         where: { id }
     })
+    
 
-    return res.json(currentSpots)
+    return res.json({
+        Spots: await spotsInfo(currentSpots)
+    })
 
 });
 
@@ -72,7 +123,52 @@ router.get('/:spotId', async (req, res) => {
 
     const spot = await Spot.findByPk(spotId)
 
-    return res.json(spot)
+    if (!spot){
+        return res.status(404).json(
+            {
+                message: "Spot couldn't be found"
+              }
+        )
+    }
+
+    const reviews = await Review.findAll({ where: { spotId: spot.id } });
+    const totalRating = reviews.reduce((acc, el) => acc + el.stars, 0);
+    const avgStarRating = totalRating / reviews.length;
+
+    // check images
+    const img = await SpotImage.findOne({
+      where: { spotId: spot.id, preview: true },
+    });
+
+    let previewImage = null;
+    if (img) {
+      previewImage = img.url;
+    }
+
+
+    const newSpot ={
+        id: spot.id,
+        ownerId: spot.ownerId,
+        address: spot.address,
+        city: spot.city,
+        state: spot.state,
+        country: spot.country,
+        lat: spot.lat,
+        lng: spot.lng,
+        name: spot.name,
+        description: spot.description,
+        price: spot.price,
+        createdAt: spot.createdAt,
+        updatedAt: spot.updatedAt,
+        numReviews: reviews.length,
+        avgStarRating, //placeholder
+        previewImage, //placeholder
+        SpotImages: spot.SpotImages,
+        Owner: spot.User,
+      };
+
+
+    return res.json(newSpot)
 });
 
 
