@@ -9,6 +9,7 @@ const { handleValidationErrors } = require('../../utils/validation');
 
 const router = express.Router();
 
+// Validate Login
 const validateLogin = [
   check('credential')
     .exists({ checkFalsy: true })
@@ -36,15 +37,17 @@ router.post(
       });
   
       if (!user || !bcrypt.compareSync(password, user.hashedPassword.toString())) {
-        const err = new Error('Login failed');
+        const err = new Error('Invalid credentials');
         err.status = 401;
         err.title = 'Login failed';
-        err.errors = { credential: 'The provided credentials were invalid.' };
+        err.errors = { message: 'Invalid credentials' };
         return next(err);
       }
   
       const safeUser = {
         id: user.id,
+        firstName:user.firstName,
+        lastName:user.lastName,
         email: user.email,
         username: user.username,
       };
@@ -74,6 +77,8 @@ router.get(
       if (user) {
         const safeUser = {
           id: user.id,
+          firstName:user.firstName,
+          lastName:user.lastName,
           email: user.email,
           username: user.username,
         };
