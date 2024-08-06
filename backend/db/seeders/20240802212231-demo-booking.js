@@ -12,26 +12,20 @@ const bookings = [
   {
     spotId:1,
     userId:1,
-    startDate:'2021-12-12',
-    endDate:'2021-12-21'
+    startDate:'2024-12-12',
+    endDate:'2024-12-21'
   },
   {
     spotId:2,
     userId:2,
-    startDate:'2011-12-12',
-    endDate:'2011-12-21'
+    startDate:'2024-12-12',
+    endDate:'2024-12-21'
   },
   {
     spotId:3,
     userId:3,
-    startDate:'2021-10-12',
-    endDate:'2021-10-21'
-  },
-  {
-    spotId: 1,
-    userId: 4,
-    startDate: "2025-12-20",
-    endDate: "2025-12-26",
+    startDate:'2024-10-12',
+    endDate:'2024-10-21'
   }
 
 ]
