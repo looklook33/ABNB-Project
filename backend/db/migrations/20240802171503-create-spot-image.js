@@ -17,10 +17,13 @@ module.exports = {
       },
       spotId: {
         type: Sequelize.INTEGER,
-        reference:{model:'Spots'}
+        allowNull: false,
+        reference:{model:'Spots'},
+        onDelete: 'CASCADE'
       },
       url: {
-        type: Sequelize.STRING
+        type: Sequelize.STRING,
+        allowNull:false
       },
       preview: {
         type: Sequelize.BOOLEAN,

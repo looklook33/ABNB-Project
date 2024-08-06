@@ -160,10 +160,12 @@ module.exports = {
   },
 
   async down (queryInterface, Sequelize) {
-    // options.tableName = 'spots';
-    // const Op= Sequelize.Op;'
-   // return queryInterface.bulkDelete(options,{})
-   await queryInterface.bulkDelete('Spots',{},{})
+    options.tableName = 'Spots';
+    const Op = Sequelize.Op;
+    return queryInterface.bulkDelete(options,{
+      country:'United States of America'
+    }, {});
+  //  await queryInterface.bulkDelete('Spots',{},{})
 
   }
 };
