@@ -46,6 +46,7 @@ const validateSpot = [
   handleValidationErrors
 ];
 
+//added validation for reviews
 const validateReview = [
   check("review")
     .exists({ checkFalsy: true })
@@ -55,6 +56,9 @@ const validateReview = [
     .withMessage("Stars must be an integer from 1 to 5"),
   handleValidationErrors,
 ];
+
+
+//Get all spots
 router.get("/", async (req, res) => {
 
   const spots = await Spot.findAll({
@@ -281,6 +285,8 @@ router.put('/:spotId', requireAuth, validateSpot, async (req, res) => {
   return res.status(200).json(spot)
 })
 
+
+// Delete a spot
 router.delete('/:spotId', requireAuth, async (req, res) => {
 
   const { spotId } = req.params;
@@ -307,7 +313,7 @@ router.delete('/:spotId', requireAuth, async (req, res) => {
     }
   )
 })
-
+// -------------------- Spots routes Related to Reviews --------------- 
 
 //Get all Reviews by a Spot's id
 router.get('/:spotId/reviews',  async (req, res) => {

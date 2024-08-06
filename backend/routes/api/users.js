@@ -7,6 +7,7 @@ const { handleValidationErrors } = require('../../utils/validation');
 const { where,Op } = require('sequelize');
 const router = express.Router();
 
+
 const validateSignup = [
   check('email')
     .exists({ checkFalsy: true })
