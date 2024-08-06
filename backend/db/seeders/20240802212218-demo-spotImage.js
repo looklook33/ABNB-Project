@@ -24,7 +24,12 @@ const spotImages = [
     spotId:3,
     url:'spotImage3',
     preview:true
-  }
+  },
+  {
+    spotId: 4,
+    url: 'spotImage4',
+    preview: true
+  },
 ]
 module.exports = {
   async up (queryInterface, Sequelize) {

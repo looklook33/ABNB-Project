@@ -27,6 +27,12 @@ const bookings = [
     startDate:'2021-10-12',
     endDate:'2021-10-21'
   },
+  {
+    spotId: 1,
+    userId: 4,
+    startDate: "2025-12-20",
+    endDate: "2025-12-26",
+  }
 
 ]
 module.exports = {

@@ -22,6 +22,10 @@ const reviewImages = [
     reviewId: 3,
     url:'image3'
   },
+  {
+    reviewId: 4,
+    url:'image4'
+  },
 ]
 module.exports = {
   async up (queryInterface, Sequelize) {

@@ -28,6 +28,13 @@ const reviews = [
     review:"Great experience and location for a scenic getaway!",
     stars:4
   },
+  {
+    userId: 4,
+    spotId: 1,
+    "review": "Great hideaway, super place to decompress and take in the nature.",
+    "stars": 5.0
+  },
+ 
 ] 
 
 module.exports = {
