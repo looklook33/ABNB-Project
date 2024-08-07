@@ -419,16 +419,51 @@ router.post('/:spotId/bookings', requireAuth, validateBooking, async (req, res) 
       message: "Forbidden",
     });
   }
-
-  const { startDate, endDate } = req.body;
-
-  const newBooking = await Booking.create({
-    spotId:spot.id,
-    userId: req.user.id,
-    startDate,
-    endDate
-  })
+  
 //Error response: Booking conflict
+
+const {startDate, endDate} = req.body;
+
+const otherBookings = await Booking.findAll({
+  where: {
+    spotId: spot.id,
+    [Op.or]: [
+      {
+        startDate: {
+          [Op.between]: [startDate, endDate],
+        },
+      },
+      {
+        endDate: {
+          [Op.between]: [startDate, endDate],
+        },
+      },
+      {
+        [Op.and]: [
+          { startDate: { [Op.lte]: startDate } },
+          { endDate: { [Op.gte]: endDate } },
+        ],
+      },
+    ],
+  },
+});
+
+if (otherBookings.length > 0) {
+  return res.status(403).json({
+    message: "Sorry, this spot is already booked for the specified dates",
+    errors: {
+      startDate: "Start date conflicts with an existing booking",
+      endDate: "End date conflicts with an existing booking",
+    },
+  });
+}
+
+const newBooking = await Booking.create({
+  spotId:spot.id,
+  userId: req.user.id,
+  startDate,
+  endDate
+})
 
   return res.status(201).json(newBooking)
 })
