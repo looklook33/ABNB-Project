@@ -16,7 +16,7 @@ router.use('/session', sessionRouter);
 router.use('/users', usersRouter);
 router.use('/spots', spotsRouter);
 router.use('/reviews', reviewsRouter);
-// router.use('/bookings',bookingRouter);
+router.use('/bookings',bookingRouter);
 // router.use('/spot-images',spotImagesRouter);
 // router.use('/review-images',reviewImagesRouter);
 
@@ -77,4 +77,4 @@ module.exports = router;
 // );
 
 
-module.exports = router;
+// module.exports = router;
