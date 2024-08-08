@@ -9,7 +9,6 @@ const { UPDATE } = require('sequelize/lib/query-types');
 const { underscoredIf } = require('sequelize/lib/utils');
 const router = express.Router();
 
-
 // added validation of booking
 const validateBooking = [
   check("startDate").custom((value, { req }) => {
@@ -30,9 +29,6 @@ const validateBooking = [
   }),
   handleValidationErrors,
 ];
-
-
-
 
 // Get all of the Current User's Bookings
 router.get('/current', requireAuth, async (req, res) => {
@@ -71,10 +67,6 @@ router.get('/current', requireAuth, async (req, res) => {
 });
 
 
-
-
-
-
 // Edit a Booking
 router.put('/:bookingId', requireAuth, validateBooking, async (req, res) => {
 
@@ -94,7 +86,6 @@ router.put('/:bookingId', requireAuth, validateBooking, async (req, res) => {
   await booking.update(req.body);
   return res.status(200).json(booking)
 });
-
 
 // Delete a Booking
 router.delete('/:bookingId', requireAuth, async (req, res) => {
@@ -117,6 +108,5 @@ router.delete('/:bookingId', requireAuth, async (req, res) => {
     message: "Successfully deleted"
   });
 });
-
 
 module.exports = router;
