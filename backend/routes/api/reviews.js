@@ -56,7 +56,6 @@ router.get('/current', requireAuth, async (req, res) => {
             reviews[i] = review;
             review.Spot.previewImage = review.Spot.SpotImages[0].url;
             delete review.Spot.SpotImages;
-            delete review.Spot.description;
         }
     }
 
