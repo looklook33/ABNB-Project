@@ -447,9 +447,9 @@ router.get('/:spotId/bookings', requireAuth, async (req, res) => {
   })
 
   if (spot.ownerId !== req.user.id) {
-    return res.status(200).json(bookingForUser)
+    return res.status(200).json({Bookings:bookingForUser})
   } else {
-    return res.status(200).json(bookingsForOwner)
+    return res.status(200).json({Bookings:bookingsForOwner})
   }
 })
 

@@ -49,13 +49,15 @@ router.get('/current', requireAuth, async (req, res) => {
             }
         ]
     })
-    // 
+   
     for (let i = 0; i < reviews.length; i++) {
-        reviews[i] = reviews[i].toJSON();
-        const previewImage = reviews[i].Spot.SpotImages[0].url;
-
-        reviews[i].Spot.previewImage = previewImage;
-        delete reviews[i].Spot.SpotImages;
+        const review = reviews[i].toJSON();
+        if (review.Spot) {
+            reviews[i] = review;
+            review.Spot.previewImage = review.Spot.SpotImages[0].url;
+            delete review.Spot.SpotImages;
+            delete review.Spot.description;
+        }
     }
 
     return res.status(200).json({ Reviews: reviews });
