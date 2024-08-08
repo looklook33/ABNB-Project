@@ -2,7 +2,6 @@ const express = require("express");
 const { setTokenCookie, requireAuth } = require("../../utils/auth");
 const { Spot, SpotImage, User } = require("../../db/models");
 const { handleValidationErrors } = require("../../utils/validation");
-
 const router = express.Router();
 
 // Delete a Spot Image
