@@ -65,6 +65,8 @@ router.get('/current', requireAuth, async (req, res) => {
   return res.status(200).json({ Bookings: bookings })
 });
 
+//test
+
 // Edit a Booking
 router.put('/:bookingId', requireAuth, validateBooking, async (req, res) => {
 
