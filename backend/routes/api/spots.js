@@ -1,12 +1,9 @@
 const express = require('express');
-const bcrypt = require('bcryptjs');
-const { setTokenCookie, requireAuth } = require('../../utils/auth');
-const { Spot, User, SpotImage, Review, ReviewImage, Booking, sequelize } = require('../../db/models');
+const { requireAuth } = require('../../utils/auth');
+const { Spot, User, SpotImage, Review, ReviewImage, Booking } = require('../../db/models');
 const { check } = require('express-validator');
 const { handleValidationErrors } = require('../../utils/validation');
-const { where, Op } = require('sequelize');
-const { UPDATE } = require('sequelize/lib/query-types');
-const { underscoredIf } = require('sequelize/lib/utils');
+const { Op } = require('sequelize');
 const router = express.Router();
 
 //added validation of spot
@@ -143,9 +140,7 @@ router.get('/', validateQuery, async (req, res) => {
   });
 
   for (let i = 0; i < spots.length; i++) {
-
     spots[i] = spots[i].toJSON();
-   
     const totalStar = spots[i].Reviews.reduce((sum, review) => sum + review.stars, 0)
     const avgRating = totalStar / (spots[i].Reviews.length).toFixed(1);
 
@@ -154,7 +149,6 @@ router.get('/', validateQuery, async (req, res) => {
     } else {
       spots[i].avgRating = null;
     }
-
     delete spots[i].Reviews;
 
     if (spots[i].SpotImages.length) {
@@ -162,7 +156,6 @@ router.get('/', validateQuery, async (req, res) => {
     } else {
       spots[i].previewImage = null
     }
-
     delete spots[i].SpotImages;
   }
 
@@ -173,13 +166,9 @@ router.get('/', validateQuery, async (req, res) => {
   })
 })
 
-
-
 //Get all Spots owned by the Current User
-
 router.get('/current', requireAuth, async (req, res) => {
   const spots = await Spot.findAll({
-
     where: { ownerId: req.user.id },
     include: [
       { model: Review },
@@ -188,9 +177,7 @@ router.get('/current', requireAuth, async (req, res) => {
   });
 
   for (let i = 0; i < spots.length; i++) {
-
     spots[i] = spots[i].toJSON();
-
     const totalStar = spots[i].Reviews.reduce((sum, review) => sum + review.stars, 0)
     const avgRating = totalStar / (spots[i].Reviews.length).toFixed(1);
 
@@ -199,7 +186,6 @@ router.get('/current', requireAuth, async (req, res) => {
     } else {
       spots[i].avgRating = null;
     }
-
     delete spots[i].Reviews;
 
     if (spots[i].SpotImages.length) {
@@ -207,7 +193,6 @@ router.get('/current', requireAuth, async (req, res) => {
     } else {
       spots[i].previewImage = null
     }
-
     delete spots[i].SpotImages;
   }
 
@@ -259,7 +244,6 @@ router.get('/:spotId', async (req, res) => {
   return res.status(200).json(spot);
 });
 
-
 //Create a Spot
 router.post('/', requireAuth, validateSpot, async (req, res, next) => {
 
@@ -269,7 +253,6 @@ router.post('/', requireAuth, validateSpot, async (req, res, next) => {
   })
 
   return res.status(201).json(spot)
-
 });
 
 //Add an Image to a Spot based on the Spot's id
@@ -304,8 +287,7 @@ router.put('/:spotId', requireAuth, validateSpot, async (req, res) => {
     return res.status(404).json(
       {
         message: "Spot couldn't be found"
-      }
-    )
+      })
   }
 
   if (spot.ownerId !== req.user.id) {
@@ -327,8 +309,7 @@ router.delete('/:spotId', requireAuth, async (req, res) => {
     return res.status(404).json(
       {
         message: "Spot couldn't be found"
-      }
-    )
+      })
   }
 
   const currentId = req.user.id;
@@ -342,8 +323,7 @@ router.delete('/:spotId', requireAuth, async (req, res) => {
   return res.status(200).json(
     {
       message: "Successfully deleted"
-    }
-  )
+    })
 })
 // -------------------- Spots routes Related to Reviews --------------- 
 
@@ -351,7 +331,6 @@ router.delete('/:spotId', requireAuth, async (req, res) => {
 router.get('/:spotId/reviews', async (req, res) => {
 
   const spot = await Spot.findByPk(req.params.spotId);
-
   if (!spot) {
     return res.status(404).json(
       {
@@ -373,11 +352,9 @@ router.get('/:spotId/reviews', async (req, res) => {
       {
         model: ReviewImage,
         attributes: ['id', 'url']
-
       }
     ]
   })
-
   return res.status(200).json({ Reviews: spotReviews });
 
 })
@@ -386,7 +363,6 @@ router.get('/:spotId/reviews', async (req, res) => {
 router.post('/:spotId/reviews', requireAuth, validateReview, async (req, res) => {
 
   const spot = await Spot.findByPk(req.params.spotId);
-
   if (!spot) {
     return res.status(404).json(
       {
@@ -408,9 +384,7 @@ router.post('/:spotId/reviews', requireAuth, validateReview, async (req, res) =>
   }
 
   const newReview = await spot.createReview({ userId: req.user.id, ...req.body });
-
   return res.status(201).json(newReview)
-
 })
 
 // -------------------- Spots routes Related to Bookings --------------- 
@@ -424,8 +398,7 @@ router.get('/:spotId/bookings', requireAuth, async (req, res) => {
     return res.status(404).json(
       {
         message: "Spot couldn't be found"
-      }
-    )
+      })
   }
 
   const bookingsForOwner = await Booking.findAll({
@@ -436,7 +409,7 @@ router.get('/:spotId/bookings', requireAuth, async (req, res) => {
       model: User,
       attributes: ['id', 'firstName', 'lastName']
     },
-    ]
+  ]
   })
 
   const bookingForUser = await Booking.findAll({
@@ -453,12 +426,10 @@ router.get('/:spotId/bookings', requireAuth, async (req, res) => {
   }
 })
 
-
 // Create a Booking from a Spot based on the Spot's id
 router.post('/:spotId/bookings', requireAuth, validateBooking, async (req, res) => {
 
   const spot = await Spot.findByPk(req.params.spotId);
-
   if (!spot) {
     return res.status(404).json({
       message: "Spot couldn't be found"
@@ -474,7 +445,6 @@ router.post('/:spotId/bookings', requireAuth, validateBooking, async (req, res) 
   //Error response: Booking conflict
 
   const { startDate, endDate } = req.body;
-
   const otherBookings = await Booking.findAll({
     where: {
       spotId: spot.id,
