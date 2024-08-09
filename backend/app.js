@@ -86,6 +86,7 @@ app.use((err, _req, _res, next) => {
 app.use((err, _req, res, _next) => {
   res.status(err.status || 500);
   console.error(err);
+
   if (err.errors) {
     res.json({
       message: err.message,
