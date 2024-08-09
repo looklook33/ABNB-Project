@@ -276,7 +276,7 @@ router.post("/:spotId/images", requireAuth, async (req, res) => {
     url: newImage.url,
     preview: newImage.preview,
   };
-  return res.status(200).json(response);
+  return res.status(201).json(response);
 });
 
 //Edit a Spot
