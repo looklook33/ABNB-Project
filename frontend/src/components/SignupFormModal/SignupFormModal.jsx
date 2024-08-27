@@ -2,10 +2,11 @@ import { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { useModal } from '../../context/Modal';
 import * as sessionActions from '../../store/session';
-//import './SignupForm.css';
+import './SignupForm.css';
 
 function SignupFormModal() {
   const dispatch = useDispatch();
+
   const [email, setEmail] = useState("");
   const [username, setUsername] = useState("");
   const [firstName, setFirstName] = useState("");
@@ -44,7 +45,7 @@ function SignupFormModal() {
   return (
     <>
       <h1>Sign Up</h1>
-      <form onSubmit={handleSubmit}>
+      <form onSubmit={handleSubmit} className='user-form'>
         <label>
           Email
           <input
@@ -53,8 +54,8 @@ function SignupFormModal() {
             onChange={(e) => setEmail(e.target.value)}
             required
           />
+        {errors.email && <p style={{color: 'rgb(196, 75, 75)'}}>{errors.email}</p>}  
         </label>
-        {errors.email && <p>{errors.email}</p>}
         <label>
           Username
           <input
@@ -64,7 +65,7 @@ function SignupFormModal() {
             required
           />
         </label>
-        {errors.username && <p>{errors.username}</p>}
+        {errors.username && <p style={{color: 'rgb(196, 75, 75)'}}>{errors.username}</p>}
         <label>
           First Name
           <input
@@ -74,7 +75,7 @@ function SignupFormModal() {
             required
           />
         </label>
-        {errors.firstName && <p>{errors.firstName}</p>}
+        {errors.firstName && <p style={{color: 'rgb(196, 75, 75)'}}>{errors.firstName}</p>}
         <label>
           Last Name
           <input
@@ -84,7 +85,7 @@ function SignupFormModal() {
             required
           />
         </label>
-        {errors.lastName && <p>{errors.lastName}</p>}
+        {errors.lastName && <p style={{color: 'rgb(196, 75, 75)'}}>{errors.lastName}</p>}
         <label>
           Password
           <input
@@ -94,7 +95,7 @@ function SignupFormModal() {
             required
           />
         </label>
-        {errors.password && <p>{errors.password}</p>}
+        {errors.password && <p style={{color: 'rgb(196, 75, 75)'}}>{errors.password}</p>}
         <label>
           Confirm Password
           <input
@@ -105,9 +106,11 @@ function SignupFormModal() {
           />
         </label>
         {errors.confirmPassword && (
-          <p>{errors.confirmPassword}</p>
+          <p style={{color: 'rgb(196, 75, 75)'}}>{errors.confirmPassword}</p>
         )}
-        <button type="submit">Sign Up</button>
+        <button type="submit"
+         disabled={( password.length < 6 || confirmPassword.length < 1 || username.length < 4 || firstName.length < 1 || lastName.length < 1 )}
+        >Sign Up</button>
       </form>
     </>
   );

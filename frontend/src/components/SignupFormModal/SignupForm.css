@@ -1,0 +1,31 @@
+.user-form {
+    width: 400px;
+    padding: 20px;
+    background-color: papayawhip;
+}
+
+.user-form *{
+    display: block;
+    margin: 0 0 10px;
+}
+
+.user-form form, 
+.user-form input, 
+.user-form button{
+    width: 100%;
+}
+
+.user-form label {
+    text-align: left;
+}
+
+.user-form input, .user-form button {
+    padding: 7px;
+}
+
+.user-form button[type="submit"] {
+    /* background-color: rgb(196, 75, 75); */
+    width: 400px;
+    color: white;
+    cursor: pointer;
+} 

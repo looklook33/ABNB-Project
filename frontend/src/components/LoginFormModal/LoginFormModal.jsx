@@ -1,8 +1,8 @@
-import { useState } from 'react';
+import { useState} from 'react';
 import * as sessionActions from '../../store/session';
 import { useDispatch } from 'react-redux';
 import { useModal } from '../../context/Modal';
-//import './LoginForm.css';
+import './LoginForm.css';
 
 function LoginFormModal() {
   const dispatch = useDispatch();
@@ -18,22 +18,32 @@ function LoginFormModal() {
       .then(closeModal)
       .catch(async (res) => {
         const data = await res.json();
+
         if (data && data.errors) {
           setErrors(data.errors);
+        } else if (data.message) {
+          setErrors({ message: "The provided credentials were invalid" });
         }
       });
   };
 
+  const handleDemoLogin = () => {
+    return dispatch(sessionActions.login({ credential: 'Demo-lition', password: 'password' }))
+      .then(closeModal)
+  }
+
   return (
-    <>
+    <div>
       <h1>Log In</h1>
-      <form onSubmit={handleSubmit}>
+      {/* {errors.credential && <p style={{ color: 'rgb(196, 75, 75)' }}>{errors.credential}</p>} */}
+      <form className='user-form' onSubmit={handleSubmit}>
         <label>
           Username or Email
           <input
             type="text"
             value={credential}
-            onChange={(e) => setCredential(e.target.value)}
+            onChange={(e) =>
+              setCredential(e.target.value)}
             required
           />
         </label>
@@ -46,12 +56,18 @@ function LoginFormModal() {
             required
           />
         </label>
-        {errors.credential && (
-          <p>{errors.credential}</p>
+        {errors.message && (
+          <p style={{ color: 'rgb(196, 75, 75)' }}>{errors.message}</p>
         )}
-        <button type="submit">Log In</button>
+        <button className='Login-btn'
+          type="submit"
+          disabled={credential.length < 4 || password.length < 6}
+        >Log In</button>
       </form>
-    </>
+
+      <button className='demo-button'
+       onClick={handleDemoLogin}>Log in as Demo User</button>
+    </div>
   );
 }
 

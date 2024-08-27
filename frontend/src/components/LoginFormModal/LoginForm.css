@@ -1,0 +1,17 @@
+#modal-content {
+    text-align: center;
+    background-color: papayawhip;
+    border-radius: 10px;
+}
+
+.demo-button {
+    background-color: transparent;
+    text-decoration:underline;
+    color: green;
+    border: none;
+    margin-bottom: 20px;
+    padding-top: 20px;
+    cursor: pointer;
+    font-weight: bold;
+    font-size: 16px;
+}

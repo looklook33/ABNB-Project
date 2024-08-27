@@ -1,15 +1,20 @@
 import { useState, useEffect, useRef } from 'react';
 import { useDispatch } from 'react-redux';
+import { useNavigate } from "react-router-dom";
+import { Link } from 'react-router-dom';
 import { FaUserCircle } from 'react-icons/fa';
 import * as sessionActions from '../../store/session';
 import OpenModalMenuItem from './OpenModalMenuItem';
 import LoginFormModal from '../LoginFormModal';
 import SignupFormModal from '../SignupFormModal';
+import './ProfileButton.css';
+
 
 function ProfileButton({ user }) {
   const dispatch = useDispatch();
   const [showMenu, setShowMenu] = useState(false);
   const ulRef = useRef();
+  const navigate = useNavigate();
 
   const toggleMenu = (e) => {
     e.stopPropagation(); // Keep from bubbling up to document and triggering closeMenu
@@ -36,24 +41,29 @@ function ProfileButton({ user }) {
     e.preventDefault();
     dispatch(sessionActions.logout());
     closeMenu();
+    navigate("/");
   };
 
   const ulClassName = "profile-dropdown" + (showMenu ? "" : " hidden");
-
+ // if user exist, display use information otherwise display login and sign up
   return (
-    <>
+    <div className='profile-wrapper'>
+      <div className='profile_container'>
+      {user && <div id='create_link'><Link to={'/spots/new'}>Create a New Spot</Link></div>}
       <button onClick={toggleMenu}>
         <FaUserCircle />
       </button>
+      </div>
       <ul className={ulClassName} ref={ulRef}>
         {user ? (
           <>
-            <li>{user.username}</li>
-            <li>{user.firstName} {user.lastName}</li>
+            <li>Hello, {user.firstName}</li>
             <li>{user.email}</li>
+            <li><Link to={'/spots/current'}>Manage Spots</Link></li>
             <li>
               <button onClick={logout}>Log Out</button>
             </li>
+            
           </>
         ) : (
           <>
@@ -70,7 +80,7 @@ function ProfileButton({ user }) {
           </>
         )}
       </ul>
-    </>
+    </div>
   );
 }
 
