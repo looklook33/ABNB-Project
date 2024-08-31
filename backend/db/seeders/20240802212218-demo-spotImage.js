@@ -12,24 +12,125 @@ if (process.env.NODE_ENV === 'production') {
 const spotImages = [
   {
     spotId:1,
-    url:'spotImage1',
+    url:"/images/cancun1.jpg",
+    preview:true
+  },
+  {
+    spotId: 1,
+    url: "/images/cancun2.jpg",
+    preview: false
+  },
+  {
+    spotId: 1,
+    url: "/images/cancun3.jpg",
+    preview: false
+  },
+  {
+    spotId: 1,
+    url: "/images/cancun4.jpg",
+    preview: false
+  },
+  {
+    spotId: 1,
+    url: "/images/cancun5.jpg",
+    preview: false
+  },
+  {
+    spotId:2,
+    url:"/images/2-1.webp",
     preview:true
   },
   {
     spotId:2,
-    url:'spotImage2',
+    url:"/images/2-2.webp",
+    preview:false
+  },
+  {
+    spotId:2,
+    url:"/images/2-3.webp",
+    preview:false
+  },
+  {
+    spotId:2,
+    url:"/images/2-4.webp",
+    preview:false
+  },
+  {
+    spotId:2,
+    url:"/images/2-5.webp",
+    preview:false
+  },
+  {
+    spotId:3,
+    url:"/images/PadreIsland1.jpg",
     preview:true
   },
   {
     spotId:3,
-    url:'spotImage3',
-    preview:true
+    url:"/images/PadreIsland2.jpg",
+    preview:false
+  },
+  {
+    spotId:3,
+    url:"/images/PadreIsland3.jpg",
+    preview:false
+  },
+  {
+    spotId:3,
+    url:"/images/PadreIsland4.jpg",
+    preview:false
+  },
+  {
+    spotId:3,
+    url:"/images/PadreIsland5.jpg",
+    preview:false
+  },  
+  {
+    spotId: 4,
+    url: "/images/Kauai6.jpg",
+    preview: true
   },
   {
     spotId: 4,
-    url: 'spotImage4',
+    url: "/images/Kauai2.jpg",
+    preview: false
+  },
+  {
+    spotId: 4,
+    url: "/images/Kauai3.jpg",
+    preview: false
+  },
+  {
+    spotId: 4,
+    url: "/images/Kauai4.jpg",
+    preview: false
+  },
+  {
+    spotId: 4,
+    url: "/images/Kauai5.jpg",
+    preview: false
+  },
+  {
+    spotId:5,
+    url:"/images/4-2.webp",
+    preview:true
+  },
+  {
+    spotId:6,
+    url:"/images/4-3.webp",
+    preview:true
+  },
+  {
+    spotId:7,
+    url:"/images/4-4.webp",
+    preview:true
+  },
+  {
+    spotId: 8,
+    url: "/images/4-5.webp",
     preview: true
   },
+
 ]
 module.exports = {
   async up (queryInterface, Sequelize) {

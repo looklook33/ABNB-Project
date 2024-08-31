@@ -1,18 +1,12 @@
 import { useNavigate } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import ProfileButton from './ProfileButton';
-import download from '../../../../images/ABNB-logo.png';
+import download from '../../../../images/Ocean2.png';
 import './Navigation.css';
 
 function Navigation({ isLoaded }) {
   const sessionUser = useSelector(state => state.session.user);
   const navigate = useNavigate();
-
-  let sessionLinks = (
-    <>
-    <ProfileButton user={sessionUser} />
-    </>
-  )
 
   return (
        <div className='nav-header'>
@@ -22,7 +16,7 @@ function Navigation({ isLoaded }) {
         }} />
       </div>
       <div>
-        {isLoaded && sessionLinks}
+        {isLoaded && <ProfileButton user={sessionUser} />}
       </div>
     </div>
   );

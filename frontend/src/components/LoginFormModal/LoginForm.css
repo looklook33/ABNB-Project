@@ -1,13 +1,13 @@
 #modal-content {
     text-align: center;
-    background-color: papayawhip;
+    background-color: skyblue;
     border-radius: 10px;
 }
 
 .demo-button {
     background-color: transparent;
     text-decoration:underline;
-    color: green;
+    color:blue;
     border: none;
     margin-bottom: 20px;
     padding-top: 20px;
@@ -15,3 +15,38 @@
     font-weight: bold;
     font-size: 16px;
 }
+
+.Login-btn {
+    background-color: dodgerblue;
+}
+
+.button-22 {
+ 
+  background-color: #12abf7;
+  border-radius: 8px;
+  border-style: none;
+  box-shadow: rgba(255, 255, 255, 0.26) 0 1px 2px inset;
+  color: #fff;
+  flex-direction: row;
+  flex-shrink: 0;
+  font-family: "RM Neue",sans-serif;
+  font-size: 100%;
+  line-height: 1.15;
+  padding: 4px 10px;
+  text-align: center;
+
+}
+
+.button-22:active {
+  background-color: #006AE8;
+}
+
+.button-22:hover {
+  background-color: #1C84FF;
+}
+.button-22:disabled {
+    background-color: #ccc; /* Light gray background */
+    color: #666; /* Dark gray text */
+    cursor: not-allowed; /* Disabled cursor */
+    opacity: 0.6; /* Slightly transparent */
+  }

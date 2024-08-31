@@ -21,3 +21,9 @@
     text-wrap: nowrap;
     padding-right: 10px;
   }
+
+  .Logout-btn {
+    background-color: dodgerblue;
+    padding: auto;
+    color: white;
+  }

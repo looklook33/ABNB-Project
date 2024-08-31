@@ -1,0 +1,37 @@
+.invalid {
+    color: red
+}
+
+.formBody {
+    width: 500px;
+    margin: 0 auto;
+    margin-bottom: 30px;
+}
+
+.section {
+    margin-bottom: 20px;
+    padding-bottom: 20px;
+    border-bottom: 2px solid black;
+}
+
+.formBody label, .formBody p {
+    margin-bottom: 5px;
+}
+
+.formBody input {
+    width: 100%;
+    margin: 0 0 10px;
+    padding: 5px;
+}
+
+.formBody textarea {
+    min-height: 200px;
+}
+
+textarea {
+    width: 500px;
+}
+
+.button_create {
+    margin-bottom: 40px;
+}

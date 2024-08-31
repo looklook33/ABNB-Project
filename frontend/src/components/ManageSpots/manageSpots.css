@@ -1,0 +1,4 @@
+.manage_spot_buttons {
+    display: flex;
+    justify-content: space-between;
+  }

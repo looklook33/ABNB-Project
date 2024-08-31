@@ -1,7 +1,7 @@
 .user-form {
     width: 400px;
     padding: 20px;
-    background-color: papayawhip;
+    background-color: skyblue;
 }
 
 .user-form *{
@@ -25,7 +25,7 @@
 
 .user-form button[type="submit"] {
     /* background-color: rgb(196, 75, 75); */
-    width: 400px;
+    width: 417px;
     color: white;
     cursor: pointer;
 } 

@@ -45,14 +45,14 @@ function ProfileButton({ user }) {
   };
 
   const ulClassName = "profile-dropdown" + (showMenu ? "" : " hidden");
- // if user exist, display use information otherwise display login and sign up
+  // if user exist, display use information otherwise display login and sign up
   return (
     <div className='profile-wrapper'>
       <div className='profile_container'>
-      {user && <div id='create_link'><Link to={'/spots/new'}>Create a New Spot</Link></div>}
-      <button onClick={toggleMenu}>
-        <FaUserCircle />
-      </button>
+        {user && <div id='create_link'><Link to={'/spots/new'}>Create a New Spot</Link></div>}
+        <button onClick={toggleMenu}>
+          <FaUserCircle />
+        </button>
       </div>
       <ul className={ulClassName} ref={ulRef}>
         {user ? (
@@ -61,21 +61,22 @@ function ProfileButton({ user }) {
             <li>{user.email}</li>
             <li><Link to={'/spots/current'}>Manage Spots</Link></li>
             <li>
-              <button onClick={logout}>Log Out</button>
+              <button className='button-22 '
+              onClick={logout}>Log Out</button>
             </li>
-            
+
           </>
         ) : (
           <>
             <OpenModalMenuItem
-              itemText="Log In"
-              onItemClick={closeMenu}
-              modalComponent={<LoginFormModal />}
-            />
-            <OpenModalMenuItem
               itemText="Sign Up"
               onItemClick={closeMenu}
               modalComponent={<SignupFormModal />}
+            />
+            <OpenModalMenuItem
+              itemText="Log In"
+              onItemClick={closeMenu}
+              modalComponent={<LoginFormModal />}
             />
           </>
         )}
