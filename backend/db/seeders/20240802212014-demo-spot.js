@@ -66,7 +66,7 @@ const spots = [
     lat: 21.7645358,
     lng: -39.4730327,
     name: "APP island",
-    description: "3.5 acre end of the road Custom built home, on a small lake perfect for kayaking or fishing. Within minutes to multiple larger lakes and beaches. This area is secluded, spacious and peaceful.",
+    description: "3.5 acre end of the road Custom built home, on a small lake perfect for kayaking or fishing. Within minutes to multiple larger lakes and beaches.",
     price: 210,
   },
   {
@@ -78,7 +78,7 @@ const spots = [
     lat: 63.7645358,
     lng: -80.4730327,
     name: "Sunrise Sanctuary",
-    description:"SUNRISE SANCTUARY has a Native American theme with vivid colors and designs that follow somewhat of a Southwestern flair, but holding true to the Native American love and respect for our wildlife.",
+    description:"SUNRISE SANCTUARY has a Native American theme with vivid colors and designs that follow somewhat of a Southwestern flair, but holding.",
     price: 230,
   },
   {
@@ -90,7 +90,7 @@ const spots = [
     lat: 35.7645358,
     lng: -36.4730327,
     name:  "Modern Lake",
-    description:  "Welcome to the Cove at 420. A modern vacation paradise where indoor and outdoor lines blur.  Every space is designed for enjoyment.  A short 75 minute drive from Chicago, this is a true retreat.  Wake up to beautiful sunrise.",
+    description:  "Welcome to the Cove at 420. A modern vacation paradise where indoor and outdoor lines blur.  Every space is designed for enjoyment.",
     price: 123,
   },
   {
