@@ -50,9 +50,12 @@ const ManageSpots = () => {
             <h1>Manage Spots</h1>
             <button className="button-22"><Link to={'/spots/new'}>Create a New Spot</Link></button>
             <div className="SpotGrid">
+
                 {OwnerSpots.map((spot) =>
-                    <div>
-                        <Link key={spot?.id} to={`/spots/${spot.id}`} style={{ textDecoration: 'none' }}>
+
+                    <div  key={spot?.id} >
+                        <Link  key={`{spot.id}`}
+                        to={`/spots/${spot.id}`} style={{ textDecoration: 'none' }}>
                             {/* spots grid display */}
                             <div className="SpotGridItem">
                                 <img src={spot.previewImage ? spot.previewImage : "/images/placeholder.png"} alt="previewImage" />
