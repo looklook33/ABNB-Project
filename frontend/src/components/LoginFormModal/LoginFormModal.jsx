@@ -15,11 +15,11 @@ function LoginFormModal() {
     const errors = {};
     // Validate credential length
     if (credential.length < 4) {
-      errors.credential = "Username must be at least 4 characters long.";
+      errors.credential = "";
     }
     // Validate password length
     if (password.length < 6) {
-      errors.password = "Password must be at least 6 characters long.";
+      errors.password = "";
     }
   
     setErrors(errors);
@@ -49,6 +49,9 @@ function LoginFormModal() {
   return (
     <div>
       <h1>Log In</h1>
+      {errors.message && (
+          <p style={{ color: 'rgb(196, 75, 75)' }}>{errors.message}</p>
+        )}
       {errors.credential && <p style={{ color: "blue" }}>{errors.credential}</p>}
       <form className='user-form' onSubmit={handleSubmit}>
         <label>
@@ -71,9 +74,7 @@ function LoginFormModal() {
             required
           />
         </label>
-        {errors.message && (
-          <p style={{ color: 'rgb(196, 75, 75)' }}>{errors.message}</p>
-        )}
+
         <button className='button-22'
           type="submit"
           disabled={credential.length < 4 || password.length < 6}

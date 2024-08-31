@@ -37,22 +37,22 @@ const spotImages = [
   },
   {
     spotId:2,
-    url:"/images/2-1.webp",
+    url:"/images/tian1.jpg",
     preview:true
   },
   {
     spotId:2,
-    url:"/images/2-2.webp",
+    url:"/images/tian2.jpg",
     preview:false
   },
   {
     spotId:2,
-    url:"/images/2-3.webp",
+    url:"/images/tian4.jpg",
     preview:false
   },
   {
     spotId:2,
-    url:"/images/2-4.webp",
+    url:"/images/tian4.jpg",
     preview:false
   },
   {
@@ -112,17 +112,17 @@ const spotImages = [
   },
   {
     spotId:5,
-    url:"/images/4-2.webp",
+    url:"/images/cozumei1.jpg",
     preview:true
   },
   {
     spotId:6,
-    url:"/images/4-3.webp",
+    url:"/images/cozumei2.jpg",
     preview:true
   },
   {
     spotId:7,
-    url:"/images/4-4.webp",
+    url:"/images/cozumei3.jpg",
     preview:true
   },
   {

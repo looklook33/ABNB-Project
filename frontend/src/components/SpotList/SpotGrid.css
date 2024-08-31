@@ -10,12 +10,11 @@
 
 .SpotGridItem>img {
     object-fit: cover;
-    border-radius: 12px;
+    border-radius: 10px;
     width: 100%;
 }
 .SpotGridItemDescription {
     height: 100px;
-
     display: flex;
     flex-direction: column;
     justify-content: space-evenly;
@@ -28,15 +27,29 @@
     justify-content: space-between;
 }
 
-.SpotGridItemStarRating {
+/* .SpotGridItemStarRating {
     display: flex;
     align-items: center;
     gap: 3.5px;
-}
-
+} */
+/* 
 .SpotGridItemPrice {
     margin-top: 4px;
-}
+} */
+
+
+  .toolTip h4 {
+    color: white;
+    background-color: rgba(0, 0, 0, 0.2);
+    position: relative;
+    bottom: 230px;
+    text-align: center;
+    font-weight: 550;
+  }
+  
+  .no-show {
+    color: white;
+  }
 
 @media screen and (min-width: 1880px) {
     .homepageHeader {

@@ -35,7 +35,7 @@
     margin: 10px 0px;
   }
   .reservation {
-    flex: auto;
+    flex:auto
   }
   .reservation_container * {
     margin: 5px 0px;

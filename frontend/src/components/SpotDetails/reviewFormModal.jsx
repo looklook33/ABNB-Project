@@ -3,7 +3,7 @@ import { useDispatch } from 'react-redux';
 import { useModal } from '../../context/Modal';
 import { createReview } from '../../store/review';
 import './spotDetails.css'
-import { FaStar } from 'react-icons/fa';
+import { FaFishFins } from "react-icons/fa6";
 
 const StarRating = ({ rating, setRating }) => {
   const [hover, setHover] = useState(0);
@@ -33,9 +33,9 @@ const StarRating = ({ rating, setRating }) => {
               onClick={() => handleClick(ratingValue)}
               style={{ display: 'none' }} // Hide the input element
             />
-            <FaStar
+            < FaFishFins
               className='star'
-              color={ratingValue <= (hover || rating) ? '#ffc107' : '#e4e5e9'}
+              color={ratingValue <= (hover || rating) ? '#0734ff' : '#e4e5e9'}
               size={30}
               onMouseEnter={() => handleMouseEnter(ratingValue)}
               onMouseLeave={handleMouseLeave}

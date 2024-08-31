@@ -13,8 +13,12 @@
 }
 
 .logo-img {
+    width:60px;
+    cursor: pointer;
+}
+.user {
+    cursor: pointer;
     width: 40px;
-    cursor: pointer
 }
 
 @media screen and (max-width: 576px) {

@@ -53,6 +53,13 @@ function SignupFormModal() {
   return (
     <>
       <h1>Sign Up</h1>
+      
+      {errors.email && <p style={{color: 'rgb(196, 75, 75)'}}>{errors.email}</p>}  
+      {errors.username && <p style={{color: 'rgb(196, 75, 75)'}}>{errors.username}</p>}
+      {errors.confirmPassword && (
+          <p style={{color: 'rgb(196, 75, 75)'}}>{errors.confirmPassword}</p>
+        )}
+
       <form onSubmit={handleSubmit} className='user-form'>
         <label>
           Email
@@ -62,7 +69,7 @@ function SignupFormModal() {
             onChange={(e) => setEmail(e.target.value)}
             required
           />
-        {errors.email && <p style={{color: 'rgb(196, 75, 75)'}}>{errors.email}</p>}  
+  
         </label>
         <label>
           Username
@@ -73,7 +80,7 @@ function SignupFormModal() {
             required
           />
         </label>
-        {errors.username && <p style={{color: 'rgb(196, 75, 75)'}}>{errors.username}</p>}
+
         <label>
           First Name
           <input
@@ -113,9 +120,7 @@ function SignupFormModal() {
             required
           />
         </label>
-        {errors.confirmPassword && (
-          <p style={{color: 'rgb(196, 75, 75)'}}>{errors.confirmPassword}</p>
-        )}
+ 
         <button className='button-22 ' type="submit"
          disabled={( password.length < 6 || confirmPassword.length < 1 || username.length < 4 || firstName.length < 1 || lastName.length < 1 )}
         >Sign Up</button>
