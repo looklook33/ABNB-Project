@@ -124,7 +124,7 @@ export default function UpdateSpotForm() {
                     />
                 </div>
                 <div className="cityState">
-                    <div className="form-group w-70 mr-2">
+                    <div>
                         <label>
                             City
                             {errors.city && <p className="invalid">{errors.city}</p>}
@@ -138,7 +138,7 @@ export default function UpdateSpotForm() {
                             required
                         />
                     </div>
-                    <div className="form-group w-70 mr-2">
+                    <div >
                         <label>
                             State
                             {errors.state && <p className="invalid">{errors.state}</p>}
@@ -153,8 +153,8 @@ export default function UpdateSpotForm() {
                         />
                     </div>
                 </div>
-                <div className="ll d-flex w-100">
-                    <div className="form-group w-50 mr-2">
+                <div >
+                    <div >
                         <label>
                             Latitude
                             {errors.lat && <p className="invalid">{errors.lat}</p>}
@@ -167,7 +167,7 @@ export default function UpdateSpotForm() {
                             onChange={(e) => setLat(e.target.value)}
                         />
                     </div>
-                    <div className="form-group w-50">
+                    <div >
                         <label>
                             Longitude
                             {errors.lng && <p className="invalid">{errors.lng}</p>}
@@ -225,8 +225,8 @@ export default function UpdateSpotForm() {
                     Competitive pricing can help your listing stand out and rank higher in
                     search results.
                 </p>
-                <span className="d-flex align-center">
-                    <span className="d-block mr-2">$</span>
+                <span>
+                    <span >$</span>
                     <input min="0" max="1000000"
                         type="Number"
                         placeholder="Price per night (USD)"

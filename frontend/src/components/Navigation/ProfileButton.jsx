@@ -7,7 +7,6 @@ import * as sessionActions from '../../store/session';
 import OpenModalMenuItem from './OpenModalMenuItem';
 import LoginFormModal from '../LoginFormModal';
 import SignupFormModal from '../SignupFormModal';
-//import download2 from '../../../../images/log-in.png';
 import './ProfileButton.css';
 
 
@@ -53,7 +52,6 @@ function ProfileButton({ user }) {
         {user && <div id='create_link'><Link to={'/spots/new'}>Create a New Spot</Link></div>}
         <button onClick={toggleMenu}>
           <FaUserCircle />
-          {/* <img className='user' src={download2} /> */}
         </button>
       </div>
       <ul className={ulClassName} ref={ulRef}>

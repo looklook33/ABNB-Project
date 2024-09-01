@@ -40,7 +40,10 @@
   .reservation_container * {
     margin: 5px 0px;
   } 
-
+  
+  .review_form {
+    margin: 10px;
+  }
   
   #spot_price {
     font-size: x-large;

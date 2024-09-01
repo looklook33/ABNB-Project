@@ -5,7 +5,7 @@ import Navigation from './components/Navigation';
 import * as sessionActions from './store/session';
 import SpotList from './components/SpotList';
 import SpotDetails from './components/SpotDetails/spotDetails';
-import CreateSpotForm from './components/SpotForm/createSpotNew'
+import CreateSpotForm from './components/CreateSpot/createSpotNew'
 import ManageSpots from './components/ManageSpots/manageSpots';
 import UpdateSpotForm from './components/UpdateSpot/UpdateSportFormNew';
 

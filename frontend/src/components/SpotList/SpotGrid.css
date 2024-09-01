@@ -39,12 +39,13 @@
 
 
   .toolTip h4 {
-    color: white;
-    background-color: rgba(0, 0, 0, 0.2);
+    color:white;
+    /* background-color: rgba(0, 0, 0, 0.2); */
+    background-color: rgba(0,0,255, 0.4);
     position: relative;
-    bottom: 230px;
+    bottom: 200px;
     text-align: center;
-    font-weight: 550;
+    font-weight: 700;
   }
   
   .no-show {

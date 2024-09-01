@@ -64,12 +64,12 @@ const reviews = [
     "review": "Amazing place!",
     "stars": 5
   },
-  {
-    userId: 1,
-    spotId: 8,
-    "review": "Amazing place.",
-    "stars": 5
-  },
+  // {
+  //   userId: 1,
+  //   spotId: 8,
+  //   "review": "Amazing place.",
+  //   "stars": 5
+  // },
  
 ] 
 

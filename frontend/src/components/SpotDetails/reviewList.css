@@ -7,7 +7,9 @@
   .reviewlist {
     margin-bottom: 70px;
   }
-
+  .confirm_deletion {
+    margin: 10px;
+  }
   .two-buttons {
     display: flex;
     flex-direction: column;
