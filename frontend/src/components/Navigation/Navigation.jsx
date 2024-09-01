@@ -15,6 +15,7 @@ function Navigation({ isLoaded }) {
           navigate("/")
         }} />
       </div>
+      <div className='title'><h1>🏖️Ocean spots🐚</h1></div>
       <div>
         {isLoaded && <ProfileButton user={sessionUser} />}
       </div>

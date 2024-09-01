@@ -37,12 +37,12 @@ const spotImages = [
   },
   {
     spotId:2,
-    url:"/images/tian1.jpg",
+    url:"/images/tian2.jpg",
     preview:true
   },
   {
     spotId:2,
-    url:"/images/tian2.jpg",
+    url:"/images/tian1.jpg",
     preview:false
   },
   {
@@ -87,7 +87,7 @@ const spotImages = [
   },  
   {
     spotId: 4,
-    url: "/images/Kauai6.jpg",
+    url: "/images/Kauai5.jpg",
     preview: true
   },
   {
@@ -107,7 +107,7 @@ const spotImages = [
   },
   {
     spotId: 4,
-    url: "/images/Kauai5.jpg",
+    url: "/images/Kauai6.jpg",
     preview: false
   },
   {
@@ -122,7 +122,7 @@ const spotImages = [
   },
   {
     spotId:7,
-    url:"/images/cozumei3.jpg",
+    url:"/images/maui1.jpg",
     preview:true
   },
   {

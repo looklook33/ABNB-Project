@@ -45,15 +45,18 @@ const ReviewList = ({ spotId }) => {
             <div className="confirm_deletion">
                 <h2>Confirm Delete</h2>
                 <p>Are you sure you want to delete this review?</p>
-                <button
-                    className="button-22"
-                    onClick={() => handleDeleteConfirm(reviewId, spotId)}
-                >
-                    Yes (Delete Review)
-                </button>
-                <button className="button-22" onClick={closeModal}>
-                    No (Keep Review)
-                </button>
+                <div className="two-buttons">
+                    <button
+                        className="button-22"
+                        onClick={() => handleDeleteConfirm(reviewId, spotId)}
+                    >
+                        Yes (Delete Review)
+                    </button>
+                    <button className="button-22" onClick={closeModal}>
+                        No (Keep Review)
+                    </button>
+                </div>
+
             </div>
         );
     };

@@ -13,12 +13,17 @@
 }
 
 .logo-img {
-    width:60px;
+    width:70px;
     cursor: pointer;
 }
 .user {
     cursor: pointer;
     width: 40px;
+}
+
+.title {
+    color: rgb(0, 115, 255);
+    font-size: 1.2vw;
 }
 
 @media screen and (max-width: 576px) {

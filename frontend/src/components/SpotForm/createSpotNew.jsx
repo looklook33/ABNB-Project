@@ -15,7 +15,7 @@ export default function UpdateSpotForm() {
     const [description, setDescription] = useState("");
     const [price, setPrice] = useState("");
     const [name, setName] = useState("");
-    const [picture, setPicture] = useState("");
+    const [previewImage, setPreviewImage] = useState("");
     const [url2, setUrl2] = useState("");
     const [url3, setUrl3] = useState("");
     const [url4, setUrl4] = useState("");
@@ -37,7 +37,7 @@ export default function UpdateSpotForm() {
         if (!description || description.length < 30) error.description = "Description must be at least 30 characters";
         if (!name) error.name = "Name is required";
         if (!price) error.price = "Price is required";
-        if (!picture) error.picture = "Preview picture is required";
+        if (!previewImage) error.previewImage = "Preview picture is required";
 
         setErrors(error);
         return Object.keys(error).length === 0;
@@ -65,7 +65,7 @@ export default function UpdateSpotForm() {
                 const newSpot = await response.json();
                 dispatch(addNewSpot(newSpot));
 
-                const imageUrls = [picture, url2, url3, url4, url5].filter(Boolean);
+                const imageUrls = [previewImage, url2, url3, url4, url5].filter(Boolean);
                 await Promise.all(imageUrls.map((url, index) =>
                     addSpotImages(newSpot.id, { url, preview: index === 0 })
                 ));
@@ -244,14 +244,14 @@ export default function UpdateSpotForm() {
                 <p>Submit a link to at least one photo to publish your spot.</p>
                 <p className="invalid">
                 </p>
+                {errors.previewImage && <p className="invalid d-block">{errors.previewImage}</p>}
                 <input
                     type="url"
                     placeholder="Preview Image URL"
                     className="url1"
-                    onChange={(e) => setPicture(e.target.value)}
+                    onChange={(e) => setPreviewImage(e.target.value)}
                 />
                 <label>
-                    {errors.picture && <p>{errors.picture}</p>}
                 </label>
                 <input
                     type="url"

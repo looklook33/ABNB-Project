@@ -7,6 +7,14 @@
   .reviewlist {
     margin-bottom: 70px;
   }
+
+  .two-buttons {
+    display: flex;
+    flex-direction: column;
+    margin: 10px, 0;
+    gap: 10px;
+    
+  }
   
   .post-review-button {
     padding: 5px 20px;

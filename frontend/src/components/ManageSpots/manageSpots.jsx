@@ -24,21 +24,25 @@ const ManageSpots = () => {
 
     const handleDeleteClick = (spotId) => {
         setModalContent(
-          <div className="confirm_deletion">
-            <h2>Confirm Delete</h2>
-            <p>Are you sure you want to remove this spot?</p>
-            <button
-              className="button-22"
-              onClick={() => handleDeleteConfirm(spotId)}
-            >
-              Yes (Delete Spot)
-            </button>
-            <button className="button-22" onClick={closeModal}>
-              No (Keep Spot)
-            </button>
-          </div>
+            <div className="confirm_deletion">
+                <h2>Confirm Delete</h2>
+                <p>Are you sure you want to remove this spot?</p>
+                <div className="two-buttons">
+                    <button
+                        className="button-22"
+                        onClick={() => handleDeleteConfirm(spotId)}
+                    >
+                        Yes (Delete Spot)
+                    </button>
+                    <button className="button-22" onClick={closeModal}>
+                        No (Keep Spot)
+                    </button>
+                </div>
+
+
+            </div>
         );
-      };
+    };
 
     const handleDeleteConfirm = async (spotId) => {
         await dispatch(deleteSpot(spotId));
@@ -53,9 +57,9 @@ const ManageSpots = () => {
 
                 {OwnerSpots.map((spot) =>
 
-                    <div  key={spot?.id} >
-                        <Link  key={`{spot.id}`}
-                        to={`/spots/${spot.id}`} style={{ textDecoration: 'none' }}>
+                    <div key={spot?.id} >
+                        <Link key={`{spot.id}`}
+                            to={`/spots/${spot.id}`} style={{ textDecoration: 'none' }}>
                             {/* spots grid display */}
                             <div className="SpotGridItem">
                                 <img src={spot.previewImage ? spot.previewImage : "/images/placeholder.png"} alt="previewImage" />
