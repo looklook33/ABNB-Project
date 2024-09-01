@@ -66,6 +66,8 @@ export default function UpdateSpotForm() {
                 dispatch(addNewSpot(newSpot));
 
                 const imageUrls = [previewImage, url2, url3, url4, url5].filter(Boolean);
+
+
                 await Promise.all(imageUrls.map((url, index) =>
                     addSpotImages(newSpot.id, { url, preview: index === 0 })
                 ));
@@ -249,6 +251,7 @@ export default function UpdateSpotForm() {
                     type="url"
                     placeholder="Preview Image URL"
                     className="url1"
+                    value={previewImage}
                     onChange={(e) => setPreviewImage(e.target.value)}
                 />
                 <label>
@@ -257,24 +260,28 @@ export default function UpdateSpotForm() {
                     type="url"
                     placeholder="Image URL"
                     className="url2"
+                    value={url2}
                     onChange={(e) => setUrl2(e.target.value)}
                 />
                 <input
                     type="url"
                     placeholder="Image URL"
                     className="url3"
+                    value={url3}
                     onChange={(e) => setUrl3(e.target.value)}
                 />
                 <input
                     type="url"
                     placeholder="Image URL"
                     className="url4"
+                    value={url4}
                     onChange={(e) => setUrl4(e.target.value)}
                 />
                 <input
                     type="url"
                     placeholder="Image URL"
                     className="url5"
+                    value={url5}
                     onChange={(e) => setUrl5(e.target.value)}
                 />
             </div>
