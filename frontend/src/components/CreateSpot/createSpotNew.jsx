@@ -240,7 +240,9 @@ export default function UpdateSpotForm() {
                 </p>
                 <span>
                     <span >$</span>
-                    <input min="0" max="1000000"
+                    <input 
+                        min='0 '
+                        max="1000000"
                         type="Number"
                         placeholder="Price per night (USD)"
                         value={price}
