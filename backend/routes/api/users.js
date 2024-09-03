@@ -39,19 +39,25 @@ router.post(
     const hashedPassword = bcrypt.hashSync(password); 
 
     //Error response: User already exists with the specified email or username 
-    const existUser = await User.findOne({
+    const existingUser = await User.findOne({
       where:{[Op.or]:{username:username, email:email}}
     })
 
-    if (existUser){
-      if(existUser.email === email || existUser.username === username){
+    if (existingUser) {
+      if (existingUser.email === email) {
         return res.status(500).json({
           message: "User already exists",
-          error:{
-            email:"User with that email already exists",
-            username:"User with that username already exists",
-          }
-        })
+          errors: {
+            email: "Email already exists",
+          },
+        });
+      } else if (existingUser.username === username) {
+        return res.status(500).json({
+          message: "User already exists",
+          errors: {
+            username: "Username already exists",
+          },
+        });
       }
     }
 

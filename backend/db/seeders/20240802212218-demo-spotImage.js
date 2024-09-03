@@ -107,7 +107,7 @@ const spotImages = [
   },
   {
     spotId: 4,
-    url: "/images/Kauai6.jpg",
+    url: "/images/Kauai1.jpg",
     preview: false
   },
   {

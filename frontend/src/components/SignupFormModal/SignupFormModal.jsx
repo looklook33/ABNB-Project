@@ -53,12 +53,12 @@ function SignupFormModal() {
   return (
     <>
       <h1>Sign Up</h1>
-      
-      {errors.email && <p style={{color: 'rgb(196, 75, 75)'}}>{errors.email}</p>}  
-      {errors.username && <p style={{color: 'rgb(196, 75, 75)'}}>{errors.username}</p>}
+
+      {errors.email && <p style={{ color: 'rgb(196, 75, 75)' }}>{errors.email}</p>}
+      {errors.username && <p style={{ color: 'rgb(196, 75, 75)' }}>{errors.username}</p>}
       {errors.confirmPassword && (
-          <p style={{color: 'rgb(196, 75, 75)'}}>{errors.confirmPassword}</p>
-        )}
+        <p style={{ color: 'rgb(196, 75, 75)' }} className='user-form'>{errors.confirmPassword}</p>
+      )}
 
       <form onSubmit={handleSubmit} className='user-form'>
         <label>
@@ -69,7 +69,7 @@ function SignupFormModal() {
             onChange={(e) => setEmail(e.target.value)}
             required
           />
-  
+
         </label>
         <label>
           Username
@@ -90,7 +90,7 @@ function SignupFormModal() {
             required
           />
         </label>
-        {errors.firstName && <p style={{color: 'rgb(196, 75, 75)'}}>{errors.firstName}</p>}
+        {errors.firstName && <p style={{ color: 'rgb(196, 75, 75)' }}>{errors.firstName}</p>}
         <label>
           Last Name
           <input
@@ -100,7 +100,7 @@ function SignupFormModal() {
             required
           />
         </label>
-        {errors.lastName && <p style={{color: 'rgb(196, 75, 75)'}}>{errors.lastName}</p>}
+        {errors.lastName && <p style={{ color: 'rgb(196, 75, 75)' }}>{errors.lastName}</p>}
         <label>
           Password
           <input
@@ -110,7 +110,7 @@ function SignupFormModal() {
             required
           />
         </label>
-        {errors.password && <p style={{color: 'rgb(196, 75, 75)'}}>{errors.password}</p>}
+        {errors.password && <p style={{ color: 'rgb(196, 75, 75)' }}>{errors.password}</p>}
         <label>
           Confirm Password
           <input
@@ -120,9 +120,9 @@ function SignupFormModal() {
             required
           />
         </label>
- 
+
         <button className='button-22 ' type="submit"
-         disabled={( password.length < 6 || confirmPassword.length < 1 || username.length < 4 || firstName.length < 1 || lastName.length < 1 )}
+          disabled={(!email || password.length < 6 || confirmPassword.length < 1 || username.length < 4 || firstName.length < 1 || lastName.length < 1)}
         >Sign Up</button>
       </form>
     </>

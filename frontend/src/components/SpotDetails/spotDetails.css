@@ -35,7 +35,8 @@
     margin: 10px 0px;
   }
   .reservation {
-    flex:auto
+    display: flex;
+    justify-content:space-between;
   }
   .reservation_container * {
     margin: 5px 0px;
@@ -81,6 +82,10 @@
   .booking_input {
     width: 90%;
   }
+
+.reserve-button{
+  text-align: center;
+}
 
 /* ---------------------Spot images------------------------------ */
 .image_container {

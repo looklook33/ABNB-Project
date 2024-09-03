@@ -58,7 +58,7 @@ const ManageSpots = () => {
                 {OwnerSpots.map((spot) =>
 
                     <div key={spot?.id} >
-                        <Link key={`{spot.id}`}
+                        <Link key={spot?.id}
                             to={`/spots/${spot.id}`} style={{ textDecoration: 'none' }}>
                             {/* spots grid display */}
                             <div className="SpotGridItem">

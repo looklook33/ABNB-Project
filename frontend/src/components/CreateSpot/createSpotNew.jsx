@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
-import { addNewSpot } from "../../store/spot.js";
+import { addNewSpot, addImage } from "../../store/spot.js";
 import { csrfFetch } from "../../store/csrf.js";
 import './SpotForm.css';
 
@@ -65,12 +65,22 @@ export default function UpdateSpotForm() {
                 const newSpot = await response.json();
                 dispatch(addNewSpot(newSpot));
 
-                const imageUrls = [previewImage, url2, url3, url4, url5].filter(Boolean);
+                // const imageUrls = [previewImage, url2, url3, url4, url5].filter(Boolean);
+                // console.log("=======================", imageUrls)
 
+                const imageArray = [
+                    {spotId: newSpot.id, preview: true, url: previewImage}, 
+                    {spotId: newSpot.id, preview: false, url: url2},
+                    {spotId: newSpot.id, preview: false, url: url3},
+                    {spotId: newSpot.id, preview: false, url: url4},
+                    {spotId: newSpot.id, preview: false, url: url5}
+                  ];
 
-                await Promise.all(imageUrls.map((url, index) =>
-                    addSpotImages(newSpot.id, { url, preview: index === 0 })
-                ));
+                  await Promise.all(imageArray.map(image => dispatch(addImage(image))));
+
+                // await Promise.all(imageUrls.map((url, index) =>
+                //     addSpotImages(newSpot.id, { url, preview: index === 0 })
+                // ));
 
                 navigate(`/spots/${newSpot.id}`);
             } catch (err) {
@@ -79,17 +89,18 @@ export default function UpdateSpotForm() {
         }
     };
 
-    const addSpotImages = async (spotId, picture) => {
-        try {
-            await csrfFetch(`/api/spots/${spotId}/images`, {
-                method: 'POST',
-                headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify(picture),
-            });
-        } catch (err) {
-            console.error('Error adding spot image:', err);
-        }
-    };
+    // const addSpotImages = async (spotId, picture) => {
+    //     // console.log("pppppppppppppppppprrrrrrrrrrrrrr", picture)
+    //     try {
+    //         await csrfFetch(`/api/spots/${spotId}/images`, {
+    //             method: 'POST',
+    //             headers: { 'Content-Type': 'application/json' },
+    //             body: JSON.stringify(picture),
+    //         });
+    //     } catch (err) {
+    //         console.error('Error adding spot image:', err);
+    //     }
+    // };
 
 
     return (

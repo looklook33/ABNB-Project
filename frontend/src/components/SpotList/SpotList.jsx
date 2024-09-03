@@ -30,7 +30,7 @@ export default function SpotList() {
                                 className="toolTip">
 
 
-                            <Link key={`{spot.id}`}
+                            <Link key={spot?.id}
                                 to={`/spots/${spot.id}`} style={{ textDecoration: 'none' }}>
 
                                 <div className="SpotGridItem">

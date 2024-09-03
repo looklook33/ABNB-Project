@@ -1,18 +1,23 @@
 .profile-wrapper {
     margin-right: 100px;
     width: fit-content;
+
+    position: relative; /* Needed for absolute positioning of dropdown menu */
+    display: inline-block; 
   }
   
   .profile_container {
     display: flex;
     justify-content: space-between;
     align-items: flex-end;
+
+    
   }
   
-  .profile-dropdown {
+  /* .profile-dropdown {
     text-align: end;
     background-color: white;
-  }
+  } */
   
   #create_link a {
     text-decoration: none;
@@ -27,4 +32,57 @@
     padding: auto;
     color: white;
   }
+  
+  .dropdown-toggle {    
+    background-color: #3498db;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+  }
 
+  .dropdown-toggle:hover {
+    background-color: #2980b9; /* Change color on hover */
+  }
+
+  .dropdown-menu {
+    display: block;  
+    position: absolute; 
+    top: 76%; 
+    left: 0;
+    background-color: #32c2ff;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+    min-width: 100px; 
+    padding: 10px 0;
+    border-radius: 5px;
+    cursor: pointer;
+    text-align:left;
+    text-indent:6px;
+    color: white;    
+  }
+
+  .dropdown-menu-login {
+    display: block;  
+    position: absolute; 
+    top: 76%; 
+    left: 165px;
+    background-color: #32c2ff;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+    min-width: 150px; 
+    padding: 10px 0;
+    border-radius: 5px;
+    text-align:left;
+    text-indent:6px;
+    color: white;    
+  }
+
+  .manager-sport{
+    cursor: pointer;
+  }
+.log-out-button {
+  text-align: center;
+  cursor: pointer;
+}

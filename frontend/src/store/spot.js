@@ -5,6 +5,8 @@ const LOAD_SPOT = "spot/LOAD_SPOT";
 const LOAD_ONE_SPOT = "spot/LOAD_ONE_SPOT";
 const CREATE_SPOT = "spot/CREATE_SPOT";
 
+const CREATE_IMAGE = "image/CREATE_IMAGE";
+
 const loadSpot = (spots) => {
   return {
     type: LOAD_SPOT,
@@ -33,6 +35,12 @@ const removeSpot = (spotId) => {
   }
 }
 
+const createImage = (spot) => {
+  return {
+    type: CREATE_IMAGE,
+    payload: spot,
+  };
+};
 
 export const deleteSpot = (spotId) => async (dispatch) => {
   try {
@@ -127,6 +135,26 @@ export const addNewSpot = (spot) => async (dispatch) => {
   }
 }
 
+export const addImage = (image) => async (dispatch) => {
+  // console.log("image in store", image);
+  const { spotId, url, preview } = image;
+  const response = await csrfFetch(`/api/spots/${spotId}/images`, {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({ url, preview }),
+  });
+  if (response.ok) {
+    const newImage = await response.json();
+    // console.log("newImage in store", newImage);
+    dispatch(createImage(newImage));
+    return newImage;
+  } else {
+    const error = await response.json();
+    // console.log("error--->", error);
+    return error;
+  }
+};
+
 const initialState = {};
 const spotsReducer = (state = initialState, action) => {
   switch (action.type) {
@@ -151,6 +179,10 @@ const spotsReducer = (state = initialState, action) => {
       const newState = { ...state };
       newState[action.spot.id] = action.spot;
       return newState;
+    }
+    case CREATE_IMAGE: {
+      // console.log("in the reducer", newState);
+      return { ...state, [action.payload.id]: action.image };
     }
     default:
       return state;

@@ -9,14 +9,14 @@ function Navigation({ isLoaded }) {
   const navigate = useNavigate();
 
   return (
-       <div className='nav-header'>
+    <div className='nav-header'>
       <div className="nav-container">
         <img className='logo-img' src={download} onClick={() => {
           navigate("/")
         }} />
       </div>
-      <div className='title'><h1>🏖️Ocean spots🐚</h1></div>
-      <div>
+      {/* <div className='title'><h1>🏖️Ocean spots🐚</h1></div> */}
+      <div className='rightHeader'>
         {isLoaded && <ProfileButton user={sessionUser} />}
       </div>
     </div>

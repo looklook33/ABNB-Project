@@ -61,10 +61,13 @@ const SpotDetail = () => {
               <span id="spot_price">${spot.price}</span><span> Night</span>
             </div>
             <div className="reservation_rating">
-              {averageRating} · {reviews?.Reviews?.length} {reviews?.Reviews?.length === 1 ? "Review" : "Reviews"}
+            🐟 {averageRating} · {reviews?.Reviews?.length} {reviews?.Reviews?.length === 1 ? "Review" : "Reviews"}
             </div>
           </div>
+          <div className="reserve-button">
           <button onClick={handleReservation}>Reserve</button>
+          </div>
+
         </div>
       </div>
 

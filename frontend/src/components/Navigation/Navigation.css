@@ -1,11 +1,12 @@
 .hidden {
-    display: none;
+    display:none;
 }
 
 .nav-header {
     display: flex;
     justify-content: space-between;
     /* justify-content: space-around; */
+    padding-bottom: 16px;
     margin-bottom: 20px;
     min-height: 80px;
     align-items: center;
@@ -19,6 +20,11 @@
 .user {
     cursor: pointer;
     width: 40px;
+}
+
+.rightHeader{
+    position:sticky;
+    top: 30px;
 }
 
 .title {
