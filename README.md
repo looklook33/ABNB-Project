@@ -1,6 +1,6 @@
 <a name="readme-top"></a>
 
-## BedNoBreakfast
+## Ocean Spots
 
 Ocean Spots is a web application clone of AirBnB, which provides information for beach spots.
 
